@@ -1,6 +1,13 @@
 package smarthome;
 
 import org.junit.jupiter.api.Test;
+import smarthome.abstractfactory.basic.BasicDoorLock;
+import smarthome.abstractfactory.basic.BasicLight;
+import smarthome.abstractfactory.basic.BasicThermostat;
+import smarthome.factorymethod.*;
+import smarthome.products.DoorLock;
+import smarthome.products.Light;
+import smarthome.products.Thermostat;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,6 +1,26 @@
 package smarthome;
 
 import org.junit.jupiter.api.Test;
+import smarthome.abstractfactory.SmartHomeFactory;
+import smarthome.abstractfactory.basic.BasicDoorLock;
+import smarthome.abstractfactory.basic.BasicHomeFactory;
+import smarthome.abstractfactory.basic.BasicLight;
+import smarthome.abstractfactory.basic.BasicThermostat;
+import smarthome.abstractfactory.security.SecurityDoorLock;
+import smarthome.abstractfactory.security.SecurityHomeFactory;
+import smarthome.abstractfactory.security.SecurityLight;
+import smarthome.abstractfactory.security.SecurityThermostat;
+import smarthome.energy.EnergySavingDoorLock;
+import smarthome.energy.EnergySavingHomeFactory;
+import smarthome.energy.EnergySavingLight;
+import smarthome.energy.EnergySavingThermostat;
+import smarthome.luxury.LuxuryDoorLock;
+import smarthome.luxury.LuxuryHomeFactory;
+import smarthome.luxury.LuxuryLight;
+import smarthome.luxury.LuxuryThermostat;
+import smarthome.products.DoorLock;
+import smarthome.products.Light;
+import smarthome.products.Thermostat;
 
 import static org.junit.jupiter.api.Assertions.*;
 
