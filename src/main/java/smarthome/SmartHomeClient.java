@@ -25,12 +25,10 @@ public class SmartHomeClient {
         thermostat = factory.createThermostat();
         doorLock = factory.createDoorLock();
 
-        System.out.println("Preparing home...");
+        //HomeModeFactory modeFactory = new LeaveHomeModeFactory();
+        //HomeModeFactory modeFactory = new NightModeFactory();
+        HomeModeFactory modeFactory = new EmergencyModeFactory();
 
-        light.turnOn();
-        thermostat.setTemperature(21);
-        doorLock.lock();
-
-        System.out.println("Home is ready.");
+        modeFactory.runMode(light, thermostat, doorLock);
     }
 }
