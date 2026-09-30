@@ -3,6 +3,7 @@ package smarthome;
 public class SmartHomeClient {
 
     public static void main(String[] args) {
+        SmartHomeFactory factory;
 
         String homeType = "security";
 
@@ -11,26 +12,18 @@ public class SmartHomeClient {
         DoorLock doorLock;
 
         if (homeType.equals("basic")) {
-
-            light = new BasicLight();
-            thermostat = new BasicThermostat();
-            doorLock = new BasicDoorLock();
-
+            factory = new BasicHomeFactory();
         } else if (homeType.equals("security")) {
-
-            light = new SecurityLight();
-            thermostat = new SecurityThermostat();
-            doorLock = new SecurityDoorLock();
-
+            factory = new SecurityHomeFactory();
         } else if (homeType.equals("energy")) {
-
-            light = new EnergySavingLight();
-            thermostat = new EnergySavingThermostat();
-            doorLock = new EnergySavingDoorLock();
-
+            factory = new EnergySavingHomeFactory();
         } else {
             throw new IllegalArgumentException("Unknown home type: " + homeType);
         }
+
+        light = factory.createLight();
+        thermostat = factory.createThermostat();
+        doorLock = factory.createDoorLock();
 
         System.out.println("Preparing home...");
 
