@@ -5,7 +5,7 @@ public class SmartHomeClient {
     public static void main(String[] args) {
         SmartHomeFactory factory;
 
-        String homeType = "security";
+        String homeType = "luxury";
 
         Light light;
         Thermostat thermostat;
@@ -17,6 +17,8 @@ public class SmartHomeClient {
             factory = new SecurityHomeFactory();
         } else if (homeType.equals("energy")) {
             factory = new EnergySavingHomeFactory();
+        } else if (homeType.equals("luxury")) {
+            factory = new LuxuryHomeFactory();
         } else {
             throw new IllegalArgumentException("Unknown home type: " + homeType);
         }
