@@ -1,0 +1,119 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+' ===== ABSTRACT FACTORY =====
+
+interface SmartHomeFactory {
+    +createLight(): Light
+    +createThermostat(): Thermostat
+    +createDoorLock(): DoorLock
+}
+
+class BasicHomeFactory
+class SecurityHomeFactory
+class EnergySavingHomeFactory
+class LuxuryHomeFactory
+
+SmartHomeFactory <|.. BasicHomeFactory
+SmartHomeFactory <|.. SecurityHomeFactory
+SmartHomeFactory <|.. EnergySavingHomeFactory
+SmartHomeFactory <|.. LuxuryHomeFactory
+
+class Light {
+    +turnOn()
+    +turnOff()
+    +setBrightness(level)
+}
+
+class Thermostat {
+    +setTemperature(temperature)
+    +turnOff()
+}
+
+class DoorLock {
+    +lock()
+    +unlock()
+}
+
+class BasicLight
+class SecurityLight
+class EnergySavingLight
+class LuxuryLight
+
+class BasicThermostat
+class SecurityThermostat
+class EnergySavingThermostat
+class LuxuryThermostat
+
+class BasicDoorLock
+class SecurityDoorLock
+class EnergySavingDoorLock
+class LuxuryDoorLock
+
+Light <|.. BasicLight
+Light <|.. SecurityLight
+Light <|.. EnergySavingLight
+Light <|.. LuxuryLight
+
+Thermostat <|.. BasicThermostat
+Thermostat <|.. SecurityThermostat
+Thermostat <|.. EnergySavingThermostat
+Thermostat <|.. LuxuryThermostat
+
+DoorLock <|.. BasicDoorLock
+DoorLock <|.. SecurityDoorLock
+DoorLock <|.. EnergySavingDoorLock
+DoorLock <|.. LuxuryDoorLock
+
+BasicHomeFactory ..> BasicLight
+BasicHomeFactory ..> BasicThermostat
+BasicHomeFactory ..> BasicDoorLock
+
+SecurityHomeFactory ..> SecurityLight
+SecurityHomeFactory ..> SecurityThermostat
+SecurityHomeFactory ..> SecurityDoorLock
+
+EnergySavingHomeFactory ..> EnergySavingLight
+EnergySavingHomeFactory ..> EnergySavingThermostat
+EnergySavingHomeFactory ..> EnergySavingDoorLock
+
+LuxuryHomeFactory ..> LuxuryLight
+LuxuryHomeFactory ..> LuxuryThermostat
+LuxuryHomeFactory ..> LuxuryDoorLock
+
+
+' ===== FACTORY METHOD =====
+
+interface HomeMode {
+    +execute(light, thermostat, doorLock)
+}
+
+abstract class HomeModeFactory {
+    +createMode(): HomeMode
+    +runMode(light, thermostat, doorLock)
+}
+
+class LeaveHomeMode
+class NightMode
+class EmergencyMode
+
+class LeaveHomeModeFactory
+class NightModeFactory
+class EmergencyModeFactory
+
+HomeMode <|.. LeaveHomeMode
+HomeMode <|.. NightMode
+HomeMode <|.. EmergencyMode
+
+HomeModeFactory <|-- LeaveHomeModeFactory
+HomeModeFactory <|-- NightModeFactory
+HomeModeFactory <|-- EmergencyModeFactory
+
+LeaveHomeModeFactory ..> LeaveHomeMode
+NightModeFactory ..> NightMode
+EmergencyModeFactory ..> EmergencyMode
+
+HomeModeFactory ..> HomeMode
+
+@enduml
